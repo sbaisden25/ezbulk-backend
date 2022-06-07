@@ -7,7 +7,6 @@ let Product = require('../models/product.model');
 router.route('/').get((req, res) => {
   Product.find()
     .then(products => res.json(products))
-    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
@@ -44,7 +43,6 @@ router.route('/add').post((req, res) => {
 
   newProduct.save()
   .then(() => res.json('Product added!'))
-  .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
@@ -52,7 +50,6 @@ router.route('/add').post((req, res) => {
 router.route('/:id').get((req, res) => {
   Product.findById(req.params.id)
     .then(product => res.json(product))
-    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
@@ -60,7 +57,6 @@ router.route('/:id').get((req, res) => {
 router.route('/:id').delete((req, res) => {
   Product.findByIdAndDelete(req.params.id)
     .then(() => res.json('Product deleted.'))
-    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
@@ -81,9 +77,7 @@ router.route('/edit/:id').post((req, res) => {
 
       product.save()
         .then(() => res.json('Product updated!'))
-        .catch(err => res.status(400).json('Error: ' + err));
     })
-    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
@@ -92,14 +86,12 @@ router.route('/sort/:sortBy/tags/:tag').get((req, res) => {
   Product.find({tags: req.params.tag})
     .sort(req.params.sortBy)
     .then(products => res.json(products))
-    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // Get products with a specific tag
 router.route('/tags/:tag').get((req, res) => {
   Product.find({tags: req.params.tag})
     .then(products => res.json(products))
-    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 // Get products sorted by sortBy
@@ -107,7 +99,6 @@ router.route('/sort/:sortBy').get((req, res) => {
   Product.find()
     .sort(req.params.sortBy)
     .then(products => res.json(products))
-    .catch(err => res.status(400).json('Error: ' + err));
 });
 
 
