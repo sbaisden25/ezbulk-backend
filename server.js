@@ -10,15 +10,6 @@ const port = process.env.PORT || 5000;
 
 // CORS
 app.use(cors());
-const corsOptions ={
-  origin:'*', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200,
-}
-app.options('*', cors(corsOptions)); // preflight OPTIONS; put before other routes
-app.listen(port, function(){
-  console.log('CORS-enabled web server listening on port 80');
-}); 
 
 require('dotenv').config();
 
@@ -41,6 +32,7 @@ connection.once('open', () => {
 
 const productsRouter = require('./routes/products');
 app.use('/products', productsRouter); 
+
 
 
 app.listen(port, () => {
