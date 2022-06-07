@@ -32,7 +32,9 @@ app.use(express.json());
 
 mongoose.connect(process.env.MONGODB_URI || process.env.ATLAS_URI, {
    useNewUrlParser: true
-});
+})
+.then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error(err));
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
