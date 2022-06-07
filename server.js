@@ -16,7 +16,7 @@ const corsOptions ={
   optionSuccessStatus:200,
 }
 app.options('*', cors(corsOptions)); // preflight OPTIONS; put before other routes
-app.listen(80, function(){
+app.listen(port, function(){
   console.log('CORS-enabled web server listening on port 80');
 }); 
 
@@ -42,9 +42,9 @@ connection.once('open', () => {
 const productsRouter = require('./routes/products');
 app.use('/products', productsRouter); 
 
-
+/* 
 
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
-});
+}); */
