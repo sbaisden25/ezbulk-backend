@@ -10,7 +10,6 @@ const port = process.env.PORT || 5000;
 
 // CORS
 app.use(cors());
-/* 
 const corsOptions ={
   origin:'*', 
   credentials:true,            //access-control-allow-credentials:true
@@ -19,9 +18,14 @@ const corsOptions ={
 app.options('*', cors(corsOptions)); // preflight OPTIONS; put before other routes
 app.listen(80, function(){
   console.log('CORS-enabled web server listening on port 80');
-}); */
+}); 
 
 require('dotenv').config();
+
+//backend greeting page
+app.get("/", (req, res) => {
+  res.send("backend server is running");
+});
 
 
 app.use(express.json());
@@ -34,22 +38,11 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
    
-app.get('/', (req, res) => {
-	res.send('Hello from MERN');
-});
 
 const productsRouter = require('./routes/products');
 app.use('/products', productsRouter); 
 
 
-if (process.env.NODE_ENV === 'production') {
-  // Priority serve any static files.
-  app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
-
-  app.get('*', function(request, response) {
-    response.sendFile(path.resolve(__dirname, '../react-ui/build', 'index.html'));
-  });
-}
 
 
 app.listen(port, () => {
