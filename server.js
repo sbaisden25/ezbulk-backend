@@ -1,8 +1,9 @@
 // Imports
 const express = require('express');
-const path = require("path")
+const path = require("path");
 const cors = require('cors');
 const mongoose = require('mongoose');
+var timeout = require('connect-timeout')
 
 // Global variables
 const app = express();
@@ -10,15 +11,7 @@ const port = process.env.PORT || 5000;
 
 // CORS
 app.use(cors());
-const corsOptions ={
-  origin:'*', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200,
-}
-app.options('*', cors(corsOptions)); // preflight OPTIONS; put before other routes
-app.listen(port, function(){
-  console.log('CORS-enabled web server listening on port 80');
-}); 
+app.use(timeout('5s'))
 
 require('dotenv').config();
 
@@ -26,9 +19,11 @@ require('dotenv').config();
 app.get("/", (req, res) => {
   res.send("backend server is running");
 });
+app.use(timeout('5s'))
 
 
 app.use(express.json());
+app.use(timeout('5s'))
 
 mongoose.connect(process.env.MONGODB_URI || process.env.ATLAS_URI, {
    useNewUrlParser: true
@@ -39,13 +34,14 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
+app.use(timeout('5s'))
    
 
 const productsRouter = require('./routes/products');
 app.use('/products', productsRouter); 
+app.use(timeout('5s'))
 
-
-/* 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
-});  */
+});  
+app.use(timeout('5s'))
