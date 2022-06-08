@@ -5,8 +5,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 var timeout = require('connect-timeout')
 
-console.log("Database_URL", process.env.DATABASE_URL);
-
 // Global variables
 const app = express();
 const port = process.env.PORT || 5000;
@@ -41,6 +39,10 @@ app.use(timeout('5s'))
 
 const productsRouter = require('./routes/products');
 app.use('/products', productsRouter); 
+app.use(timeout('5s'))
+
+const postsRouter = require('./routes/posts');
+app.use('/posts', postsRouter); 
 app.use(timeout('5s'))
 
 app.listen(port, () => {

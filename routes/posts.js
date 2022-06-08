@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { model } = require('mongoose');
 let Post = require('../models/post.model');
 
 
@@ -63,3 +64,5 @@ router.put(
     });
 }
 );
+
+module.exports = router;
