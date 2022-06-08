@@ -4,19 +4,20 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
   name: { type: String, required: true },
-  price: { type: Number, required: true },
-  caloriesPerServing: { type: Number, required: true },
-  proteinPerServing: { type: Number, required: true },
-  totalFatPerServing: { type: Number, required: true },
-  carbsPerServing: { type: Number, required: true },
-  servingsPerProduct: { type: Number, required: true },
-  img: { type: String, required: true },
-  link: { type: String, required: true },
+  price: { type: Number},
+  caloriesPerServing: { type: Number},
+  proteinPerServing: { type: Number},
+  totalFatPerServing: { type: Number},
+  carbsPerServing: { type: Number},
+  servingsPerProduct: { type: Number},
+  img: { type: String},
+  link: { type: String},
   calsPerDol: { type: Number},
   protPerDol: { type: Number},
   fatPerDol: { type: Number},
   carbPerDol: { type: Number},
-  tags: { type: Array }
+  tags: { type: Array },
+  content: { type: String}
 
 }, {
   timestamps: true,

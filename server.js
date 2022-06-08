@@ -5,6 +5,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 var timeout = require('connect-timeout')
 
+console.log("Database_URL", process.env.DATABASE_URL);
+
 // Global variables
 const app = express();
 const port = process.env.PORT || 5000;
