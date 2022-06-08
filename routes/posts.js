@@ -4,7 +4,7 @@ let Post = require('../models/post.model');
 
 
 // Get all posts
-router.route('/posts').get((req, res) => {
+router.route('/all').get((req, res) => {
     Post.find()
       .then(posts => res.json(posts))
   });
