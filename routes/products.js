@@ -22,7 +22,6 @@ router.route('/add').post((req, res) => {
   const img = req.body.img;
   const link = req.body.link;
   const tags = req.body.tags;
-  const content = req.body.content;
 
   const newProduct = new Product({
     name,
@@ -38,8 +37,7 @@ router.route('/add').post((req, res) => {
     protPerDol: -((proteinPerServing * servingsPerProduct / price).toFixed()),
     fatPerDol: -((totalFatPerServing * servingsPerProduct / price).toFixed()),
     carbPerDol: -((carbsPerServing * servingsPerProduct / price).toFixed()),
-    tags,
-    content
+    tags
 
   });
 
@@ -61,27 +59,6 @@ router.route('/:id').delete((req, res) => {
     .then(() => res.json('Product deleted.'))
 });
 
-
-// Edit a product by id
-router.route('/edit/:id').post((req, res) => {
-  Product.findById(req.params.id)
-    .then(product => {
-      product.name = req.body.name;
-      product.price = Number(req.body.price);
-      product.caloriesPerServing = Number(req.body.caloriesPerServing);
-      product.proteinPerServing = Number(req.body.proteinPerServing);
-      product.totalFatPerServing = Number(req.body.totalFatPerServing);
-      product.carbsPerServing = Number(req.body.carbsPerServing);
-      product.servingsPerProduct = Number(req.body.servingsPerProduct);
-      product.img = req.body.img;
-      product.link = req.body.link;
-      product.tags = req.body.tags;
-      product.content = req.body.content;
-
-      product.save()
-        .then(() => res.json('Product updated!'))
-    })
-});
 
 
 // Get products sorted by sortBy and tag

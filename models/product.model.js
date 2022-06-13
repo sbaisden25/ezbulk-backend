@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
-  name: { type: String, required: true },
+  name: { type: String},
   price: { type: Number},
   caloriesPerServing: { type: Number},
   proteinPerServing: { type: Number},
@@ -16,8 +16,7 @@ const productSchema = new Schema({
   protPerDol: { type: Number},
   fatPerDol: { type: Number},
   carbPerDol: { type: Number},
-  tags: { type: Array },
-  content: { type: String}
+  tags: { type: Array }
 
 }, {
   timestamps: true,
