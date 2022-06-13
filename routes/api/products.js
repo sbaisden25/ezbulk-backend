@@ -1,6 +1,9 @@
 
 const router = require('express').Router();
-let Product = require('../models/product.model');
+
+// Load Product model
+let Product = require('../../models/Product.js');
+
 
 
 // Get all products

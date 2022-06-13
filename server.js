@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const passport = require("passport");
 var timeout = require('connect-timeout')
 
-const productsRouter = require('./routes/products');
+const products = require('./routes/api/products');
 const users = require("./routes/api/users");
 
 // Global variables
@@ -50,7 +50,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/users", users);
-app.use('/products', productsRouter); 
+app.use('/products', products); 
 
 
 app.use(bodyParser.urlencoded({ extended: true }))
