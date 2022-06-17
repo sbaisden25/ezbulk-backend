@@ -37,7 +37,7 @@ connection.once('open', () => {
 app.use(timeout('5s'))
    
 
-const productsRouter = require('./routes/products');
+const productsRouter = require('./routes/api/products');
 app.use('/products', productsRouter); 
 app.use(timeout('5s'))
 
