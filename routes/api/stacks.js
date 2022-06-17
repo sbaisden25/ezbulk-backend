@@ -8,7 +8,7 @@ let Stack = require('../../models/Stack.js');
 
 // Get all stacks
 router.route('/').get((req, res) => {
-  Product.find()
+  Stack.find()
     .then(stacks => res.json(stacks))
 });
 
