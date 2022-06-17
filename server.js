@@ -39,6 +39,8 @@ app.use(timeout('5s'))
 
 const productsRouter = require('./routes/api/products');
 app.use('/products', productsRouter); 
+const stacksRouter = require('./routes/api/stacks');
+app.use('/stacks', stacksRouter); 
 app.use(timeout('5s'))
 
 app.listen(port, () => {
