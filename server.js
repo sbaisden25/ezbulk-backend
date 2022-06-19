@@ -42,6 +42,9 @@ app.use('/products', productsRouter);
 const stacksRouter = require('./routes/api/stacks');
 app.use('/stacks', stacksRouter); 
 app.use(timeout('5s'))
+const postsRouter = require('./routes/api/posts');
+app.use('/research', postsRouter);
+app.use(timeout('5s'))
 
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
